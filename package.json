@@ -1,0 +1,19 @@
+{
+    "name": "SSProject",
+    "version": "1.0.0",
+    "keywords": [
+        "util",
+        "functional",
+        "server",
+        "client",
+        "browser"
+    ],
+    "author": "Abril González Abitia",
+    "contributors": [],
+    "dependencies": {
+        "express": "^4.15.5",
+        "mongodb": "^2.2.33"
+    }, "scripts":{
+"start":"node public\/server.js"}
+
+}
