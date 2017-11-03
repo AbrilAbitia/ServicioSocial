@@ -11,9 +11,17 @@
     "author": "Abril González Abitia",
     "contributors": [],
     "dependencies": {
-        "express": "^4.15.5",
-        "mongodb": "^2.2.33"
-    }, "scripts":{
-"start":"node public\/server.js"}
-
+        "body-parser": "^1.18.2",
+        "bootstrap": "^3.3.7",
+        "ejs": "^2.5.7",
+        "express": "^4.16.2",
+        "express-session": "^1.15.6",
+        "jquery": "^3.2.1",
+        "mongodb": "^2.2.33",
+        "mongoose": "^4.12.4",
+        "pug": "^2.0.0-rc.4"
+    },
+    "scripts": {
+        "start": "node src/server.js"
+    }
 }
