@@ -17,9 +17,9 @@ exports.alumno_list = function (request, response) {
 
 exports.alumno_registro = function (request, response) {
     if (request.query.create === 'true') {
-        response.render('alumno_form', {title: 'Registro de alumno', create: true, boleta: 'boleta'});
+        response.render('alumno_form', {title: 'Registro de alumno'});
     } else {
-        response.render('alumno_form', {title: 'Registro de alumno', create: false});
+        response.render('alumno_form', {title: 'Editar alumno', numeroBoleta: '2010630285'});
     }
 };
 
