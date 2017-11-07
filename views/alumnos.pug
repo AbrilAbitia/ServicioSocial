@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= title
+  
+  ul
+  each alumno in alumnos
+    li 
+      a(href=alumno.url) #{alumno.nombre_completo} 
+
+  else
+    li Sin alumnos.

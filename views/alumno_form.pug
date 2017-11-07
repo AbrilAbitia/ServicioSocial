@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  .main.container
+    .row
+      .col-md-6.col-md-offset-3
+        h1.display-4.m-b-2 Registrar alumno
+
+        form()
+          if create == true
+            div.form-group
+              label(for='boleta') Boleta:
+              input#boleta.form-control(type='text', name='boleta')
+          else
+            div.form-group
+              label(for='boleta') Boleta:
+              input#boleta.form-control(type='text', name='boleta', disabled='true', value=boleta)
+
+          div.form-group
+            label(for='nombre') Nombre(s):
+            input#nombre.form-control(type='text', name='nombre')
+          div.form-group
+            label(for='apellido_paterno') Apellido paterno:
+            input#apellido_paterno.form-control(type='text', name='apellido_paterno')
+          div.form-group
+            label(for='apellido_materno') Apellido materno:
+            input#apellido_materno.form-control(type='text' name='apellido_materno')
+          button.btn.btn-primary(type='button') Registrar
