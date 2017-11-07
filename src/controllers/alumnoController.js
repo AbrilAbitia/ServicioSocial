@@ -1,21 +1,36 @@
 var Alumno = require('../models/alumno');
 
-// Display list of all Alumnos
 exports.alumno_list = function (request, response) {
-    response.send('NOT IMPLEMENTED: Alumno list');
+    var query = Alumno.find({}, 'boleta');
+    var promise = query.exec();
+    promise.then(function (err, list_alumnos) {
+        if (err) {
+            response.locals.message = 'Not found';
+            response.locals.error = err;
+            response.status(err.status || 500);
+            response.render('error');
+        } else {
+            response.render('alumnos', {title: 'Lista de alumnos', alumnos: list_alumnos});
+        }
+    });
 };
 
-// Display detail page for a specific Alumno
+exports.alumno_registro = function (request, response) {
+    if (request.query.create === 'true') {
+        response.render('alumno_form', {title: 'Registro de alumno', create: true, boleta: 'boleta'});
+    } else {
+        response.render('alumno_form', {title: 'Registro de alumno', create: false});
+    }
+};
+
 exports.alumno_detail = function (request, response) {
     response.send('NOT IMPLEMENTED: Alumno detail: ' + request.params.alumnoBoleta);
 };
 
-// Handle Alumno create on PUT
 exports.alumno_saveOrUpdate = function (request, response) {
     response.send('NOT IMPLEMENTED: Alumno save or update PUT');
 };
 
-// Display Alumno delete form on DELETE
 exports.alumno_delete = function (request, response) {
     response.send('NOT IMPLEMENTED: Alumno delete DELETE');
 };

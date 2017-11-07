@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 var Schema = mongoose.Schema;
 var AlumnoSchema = Schema(
         {
@@ -17,5 +18,7 @@ AlumnoSchema.virtual('url').get(function () {
     return '/alumnos/alumno/' + this._id;
 });
 // Export model
+
+
 module.exports = mongoose.model('Alumno', AlumnoSchema);
 
