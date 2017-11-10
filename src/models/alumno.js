@@ -9,6 +9,7 @@ var AlumnoSchema = Schema(
             apellido_materno: {type: String, required: true, max: 100}
         }
 );
+
 // Virtual for author's full name
 AlumnoSchema.virtual('nombre_completo').get(function () {
     return this.nombre + ', ' + this.apellido_paterno + ', ' + this.apellido_materno;
@@ -19,6 +20,14 @@ AlumnoSchema.virtual('url').get(function () {
 });
 // Export model
 
+function saveOrUpdate(alumno) {
+    console.log("alumno creado: " + alumno);
+    AlumnoSchema.findOneAndUpdate({
+        _id: mongoose.Types.ObjectId(alumno._id)
+    }, {alumno}, {upsert: true}, function (error, response) {
+        console.log("Error: " + error);
+        console.log("Response: " + response);
+    });
+}
 
 module.exports = mongoose.model('Alumno', AlumnoSchema);
-
