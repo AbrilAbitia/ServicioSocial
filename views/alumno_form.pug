@@ -7,23 +7,22 @@ block content
   .main.container
     .row
       .col-md-6.col-md-offset-3
-        h1.display-4.m-b-2 Registrar alumno
+        h1.display-4.m-b-2 #{title}
         form#alumnoForm()
-          if numeroBoleta
-            div.form-group
-              label(for='boleta') Boleta:
-              input#boleta.form-control(value=numeroBoleta, type='text', name='boleta', disabled='true')
-          else
-            div.form-group
-              label(for='boleta') Boleta:
-              input#boleta.form-control(type='text', name='boleta')
+          div.form-group
+            label(for='boleta') Boleta:
+            input#boleta.form-control(type='text', name='boleta', value=alumno.boleta, disabled=isBoletaDisabled)
           div.form-group
             label(for='nombre') Nombre(s):
-            input#nombre.form-control(type='text', name='nombre')
+            input#nombre.form-control(type='text', name='nombre', value=alumno.nombre, disabled=areFieldsDisabled)
           div.form-group
             label(for='apellido_paterno') Apellido paterno:
-            input#apellido_paterno.form-control(type='text', name='apellido_paterno')
+            input#apellido_paterno.form-control(type='text', name='apellido_paterno', value=alumno.apellido_paterno, disabled=areFieldsDisabled)
           div.form-group
             label(for='apellido_materno') Apellido materno:
-            input#apellido_materno.form-control(type='text' name='apellido_materno')
-          button.btn.btn-primary(type='button', onClick='putAlumno()') Registrar
+            input#apellido_materno.form-control(type='text' name='apellido_materno', value=alumno.apellido_materno, disabled=areFieldsDisabled)
+          if areFieldsDisabled
+          else if isBoletaDisabled 
+            button.btn.btn-primary(type='button', onClick='putAlumno()') Editar
+          else 
+            button.btn.btn-primary(type='button', onClick='putAlumno()') Registrar
