@@ -1,0 +1,15 @@
+extends layout
+  
+block content
+  div#login-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true', style='display: none;')
+    div.modal-dialog
+      div.loginmodal-container
+        h1 Ingresa a tu cuenta
+        form
+          input(type='text', name='user', placeholder='usuario')
+          input(type='password', name='pass', placeholder='contraseña')
+          input.login.loginmodal-submit(type='submit', name='login', value='Ingresar')
+        div.login-help
+            a(href='#') Registrarse - 
+            a(href='#') Olvidé mi contraseña
+    

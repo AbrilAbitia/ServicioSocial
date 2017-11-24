@@ -3,10 +3,13 @@ extends layout
 block scripts
   script(src='/js/sender.js')
 
+block sidebar
+  include sidebar.pug
+
 block content
-  .main.container
-    .row
-      .col-md-6.col-md-offset-3
+  div.main.container
+    div.row
+      div.col-md-6.col-md-offset-3
         h1.display-4.m-b-2 #{title}
         form#alumnoForm()
           div.form-group
