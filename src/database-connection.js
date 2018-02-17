@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 
 var mongoDB = 'mongodb://admin:admin@cluster-shard-00-00-lld8v.mongodb.net:27017,cluster-shard-00-01-lld8v.mongodb.net:27017,cluster-shard-00-02-lld8v.mongodb.net:27017/test?ssl=true&replicaSet=cluster-shard-0&authSource=admin';
 

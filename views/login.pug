@@ -1,15 +1,19 @@
 extends layout
-  
+
+block css
+  link(rel='stylesheet', href='/stylesheets/login.css')
+
 block content
-  div#login-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true', style='display: none;')
+  div.modal-backdrop.fade.in
+  div#login-modal.modal.fade.in(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='false', style='display: block;')
     div.modal-dialog
       div.loginmodal-container
         h1 Ingresa a tu cuenta
-        form
+        form(action='/login' method='post')
           input(type='text', name='user', placeholder='usuario')
           input(type='password', name='pass', placeholder='contraseña')
           input.login.loginmodal-submit(type='submit', name='login', value='Ingresar')
         div.login-help
             a(href='#') Registrarse - 
-            a(href='#') Olvidé mi contraseña
+            a(href='#') &nbsp;Olvidé mi contraseña
     

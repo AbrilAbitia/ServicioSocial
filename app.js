@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var favicon = require('serve-favicon');
 var session = require('express-session');
 var passport = require('passport');
+var LocalStrategy = require('passport-local');
 
 var db = require('./src/database-connection');
 var alumnos = require('./src/routes/alumnos');
