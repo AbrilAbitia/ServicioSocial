@@ -12,4 +12,8 @@ var MateriaSchema = Schema(
         }
 );
 
+MateriaSchema.virtual('url').get(function () {
+    return '/materias/' + this.clave;
+});
+
 module.exports = mongoose.model('Materia', MateriaSchema);

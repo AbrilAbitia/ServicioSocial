@@ -10,7 +10,7 @@ router.get('/lista', materia_controller.materia_list);
 
 router.get('/registro_materia', materia_controller.materia_registro);
 
-router.get('/:materiaClave([0-9]+)', materia_controller.materia_detail);
+router.get('/:materiaClave([A-Z]+)', materia_controller.materia_detail);
 
 router.put('/:materiaClave', materia_controller.materia_saveOrUpdate);
 

@@ -62,8 +62,7 @@ exports.materia_saveOrUpdate = function (request, response) {
         _id: request.body.clave,
         clave: request.body.clave,
         nombre: request.body.nombre,
-        apellido_paterno: request.body.apellido_paterno,
-        apellido_materno: request.body.apellido_materno
+        tipo: request.body.tipo
     });
     var query = Materia.findOneAndUpdate({clave: materia.clave}, {$set: materia}, {upsert: true, new : true});
     var promise = query.exec();

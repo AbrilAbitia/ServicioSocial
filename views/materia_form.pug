@@ -14,15 +14,15 @@ block content
         form#materiaForm()
           div.form-group
             label(for='clave') Clave:
-            input#clave.form-control(type='text', name='clave', value=materia.clave, disabled=isClaveDisabled)
+            input#clave.form-control(type='text', name='clave', value=materia.clave, readonly=isClaveDisabled)
           div.form-group
             label(for='nombre') Nombre:
-            input#nombre.form-control(type='text', name='nombre', value=materia.nombre, disabled=areFieldsDisabled)
+            input#nombre.form-control(type='text', name='nombre', value=materia.nombre, readonly=areFieldsDisabled)
           div.form-group
             label(for='tipo') Tipo:
-            input#tipo.form-control(type='text', name='tipo', value=materia.tipo, disabled=areFieldsDisabled)
+            input#tipo.form-control(type='text', name='tipo', value=materia.tipo, readonly=areFieldsDisabled)
           if areFieldsDisabled
-          else if isNumeroDisabled 
+          else if isClaveDisabled 
             button.btn.btn-primary(type='button', onClick='putMateria()') Editar
           else 
             button.btn.btn-primary(type='button', onClick='putMateria()') Registrar
