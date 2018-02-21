@@ -1,0 +1,28 @@
+extends layout
+
+block scripts
+  script(src='/js/sender.js')
+
+block sidebar
+  include sidebar.pug
+
+block content
+  div.main.container
+    div.row
+      div.col-md-6.col-md-offset-3
+        h1.display-4.m-b-2 #{title}
+        form#materiaForm()
+          div.form-group
+            label(for='clave') Clave:
+            input#clave.form-control(type='text', name='clave', value=materia.clave, disabled=isClaveDisabled)
+          div.form-group
+            label(for='nombre') Nombre:
+            input#nombre.form-control(type='text', name='nombre', value=materia.nombre, disabled=areFieldsDisabled)
+          div.form-group
+            label(for='tipo') Tipo:
+            input#tipo.form-control(type='text', name='tipo', value=materia.tipo, disabled=areFieldsDisabled)
+          if areFieldsDisabled
+          else if isNumeroDisabled 
+            button.btn.btn-primary(type='button', onClick='putMateria()') Editar
+          else 
+            button.btn.btn-primary(type='button', onClick='putMateria()') Registrar

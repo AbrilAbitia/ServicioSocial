@@ -15,6 +15,9 @@ var LocalStrategy = require('passport-local');
 
 var db = require('./src/database-connection');
 var alumnos = require('./src/routes/alumnos');
+var profesores = require('./src/routes/profesores');
+var materias = require('./src/routes/materias');
+var usuarios = require('./src/routes/usuarios');
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -72,6 +75,9 @@ app.get('/logout', function (request, response) {
 });
 
 app.use('/alumnos', alumnos);
+app.use('/profesores', profesores);
+app.use('/materias', materias);
+app.use('/usuarios', usuarios);
 
 app.use(function (request, response, next) {
     var err = new Error('Not Found');

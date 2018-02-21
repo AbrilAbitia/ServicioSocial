@@ -1,0 +1,15 @@
+extends layout
+
+block sidebar
+  include sidebar.pug
+  
+block content
+  h1= title
+  
+  ul
+  each usuario in usuarios
+    li 
+      a(href=usuario.url) #{usuario.user} 
+
+  else
+    li Sin usuarios.

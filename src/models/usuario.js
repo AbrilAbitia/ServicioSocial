@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 var UserSchema = Schema(
         {
             user: {type: String, required: true, unique: true, max: 20},
-            password: {type: String, required: true, min: 8, max: 16},
+            password: {type: String, required: true, min: 8, max: 16}
         }
 );
 

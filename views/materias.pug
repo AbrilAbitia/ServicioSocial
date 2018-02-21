@@ -1,0 +1,15 @@
+extends layout
+
+block sidebar
+  include sidebar.pug
+  
+block content
+  h1= title
+  
+  ul
+  each materia in materias
+    li 
+      a(href=materia.url) #{materia.nombre} 
+
+  else
+    li Sin materias.
