@@ -12,7 +12,7 @@ function putAlumno() {
 function putProfesor() {
     $.ajax({
         type: 'PUT',
-        url: '/profesores/' + $('#numero').prop('value'),
+        url: '/profesores/' + $('#numero_registro').prop('value'),
         data: $('#profesorForm').serialize(),
         success: function (data) {
             alert(data);
