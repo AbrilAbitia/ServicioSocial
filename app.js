@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 
+var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 8080;
+var ip = process.env.OPENSHIFT_NODEJS_IP || process.env.IP || '0.0.0.0';
+
 var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -83,7 +86,6 @@ app.use(function (err, request, response, next) {
     response.render('error');
 });
 
-app.listen(3000, function () {
-    console.log('Example app listening on port 3000!');
+app.listen(port, function () {
+    console.log('App listening.');
 });
-
