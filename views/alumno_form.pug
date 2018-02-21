@@ -14,16 +14,16 @@ block content
         form#alumnoForm()
           div.form-group
             label(for='boleta') Boleta:
-            input#boleta.form-control(type='text', name='boleta', value=alumno.boleta, disabled=isBoletaDisabled)
+            input#boleta.form-control(type='text', name='boleta', value=alumno.boleta, readonly=isBoletaDisabled)
           div.form-group
             label(for='nombre') Nombre(s):
-            input#nombre.form-control(type='text', name='nombre', value=alumno.nombre, disabled=areFieldsDisabled)
+            input#nombre.form-control(type='text', name='nombre', value=alumno.nombre, readonly=areFieldsDisabled)
           div.form-group
             label(for='apellido_paterno') Apellido paterno:
-            input#apellido_paterno.form-control(type='text', name='apellido_paterno', value=alumno.apellido_paterno, disabled=areFieldsDisabled)
+            input#apellido_paterno.form-control(type='text', name='apellido_paterno', value=alumno.apellido_paterno, readonly=areFieldsDisabled)
           div.form-group
             label(for='apellido_materno') Apellido materno:
-            input#apellido_materno.form-control(type='text' name='apellido_materno', value=alumno.apellido_materno, disabled=areFieldsDisabled)
+            input#apellido_materno.form-control(type='text' name='apellido_materno', value=alumno.apellido_materno, readonly=areFieldsDisabled)
           if areFieldsDisabled
           else if isBoletaDisabled 
             button.btn.btn-primary(type='button', onClick='putAlumno()') Editar
