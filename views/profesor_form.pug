@@ -14,16 +14,16 @@ block content
         form#profesorForm()
           div.form-group
             label(for='numero_registro') Número profesor:
-            input#numero_registro.form-control(type='text', name='numero_registro', value=profesor.numeroProfesor, disabled=isNumeroProfesor)
+            input#numero_registro.form-control(type='text', name='numero_registro', value=profesor.numero_registro, readonly=isNumeroDisabled)
           div.form-group
             label(for='nombre') Nombre(s):
-            input#nombre.form-control(type='text', name='nombre', value=profesor.nombre, disabled=areFieldsDisabled)
+            input#nombre.form-control(type='text', name='nombre', value=profesor.nombre, readonly=areFieldsDisabled)
           div.form-group
             label(for='apellido_paterno') Apellido paterno:
-            input#apellido_paterno.form-control(type='text', name='apellido_paterno', value=profesor.apellido_paterno, disabled=areFieldsDisabled)
+            input#apellido_paterno.form-control(type='text', name='apellido_paterno', value=profesor.apellido_paterno, readonly=areFieldsDisabled)
           div.form-group
             label(for='apellido_materno') Apellido materno:
-            input#apellido_materno.form-control(type='text' name='apellido_materno', value=profesor.apellido_materno, disabled=areFieldsDisabled)
+            input#apellido_materno.form-control(type='text' name='apellido_materno', value=profesor.apellido_materno, readonly=areFieldsDisabled)
           if areFieldsDisabled
           else if isNumeroDisabled 
             button.btn.btn-primary(type='button', onClick='putProfesor()') Editar

@@ -17,7 +17,7 @@ var ProfesorSchema = Schema(
             },
             curp: {type: String, required: true, min: 18, maxlength: 18},
             rfc: {type: String, required: true, min: 13, maxlength: 13},
-            fecha_nacimiento: {type: Date, required: true},
+            fecha_nacimiento: {type: Date, required: true}
         },
         {
             toObject: {virtuals: true},
@@ -30,7 +30,7 @@ ProfesorSchema.virtual('nombre_completo').get(function () {
 });
 
 ProfesorSchema.virtual('url').get(function () {
-    return '/profesors/' + this.boleta;
+    return '/profesores/' + this.numero_registro;
 });
 
 module.exports = mongoose.model('Profesor', ProfesorSchema);

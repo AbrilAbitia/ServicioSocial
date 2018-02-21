@@ -19,7 +19,7 @@ exports.profesor_registro = function (request, response) {
     var profesor = null;
     if (request.query.option === 'create') {
         profesor = {
-            numero: '',
+            numero_registro: '',
             nombre: '',
             apellido_paterno: '',
             apellido_materno: ''
@@ -43,7 +43,7 @@ exports.profesor_registro = function (request, response) {
 
 exports.profesor_detail = function (request, response) {
     console.log("Buscar profesor: " + request.params.profesorNumero);
-    var query = Profesor.findOne({numero: request.params.profesorNumero}, {});
+    var query = Profesor.findOne({numero_registro: request.params.profesorNumero}, {});
     var promise = query.exec();
     promise.then(function (profesor) {
         console.log("Encontrado: " + profesor);
@@ -59,13 +59,13 @@ exports.profesor_detail = function (request, response) {
 exports.profesor_saveOrUpdate = function (request, response) {
     console.log("save or update");
     let profesor = new Profesor({
-        _id: request.body.numero,
-        numero: request.body.numero,
+        _id: request.body.numero_registro,
+        numero_registro: request.body.numero_registro,
         nombre: request.body.nombre,
         apellido_paterno: request.body.apellido_paterno,
         apellido_materno: request.body.apellido_materno
     });
-    var query = Profesor.findOneAndUpdate({numero: profesor.numero}, {$set: profesor}, {upsert: true, new : true});
+    var query = Profesor.findOneAndUpdate({numero_registro: profesor.numero_registro}, {$set: profesor}, {upsert: true, new : true});
     var promise = query.exec();
     promise.then(function (profesor) {
         console.log("profesor creado: " + profesor);
