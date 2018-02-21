@@ -14,10 +14,10 @@ block content
         form#usuarioForm()
           div.form-group
             label(for='usuario') Usuario:
-            input#user.form-control(type='text', name='user', value=usuario.user, disabled=isUsuarioDisabled)
+            input#user.form-control(type='text', name='user', value=usuario.user, readonly=isUsuarioDisabled)
           div.form-group
             label(for='contrasena') Contraseña:
-            input#password.form-control(type='text', name='password', value=usuario.password, disabled=areFieldsDisabled)
+            input#password.form-control(type='text', name='password', value=usuario.password, readonly=areFieldsDisabled)
           if areFieldsDisabled
           else if isUsuarioDisabled 
             button.btn.btn-primary(type='button', onClick='putUsuario()') Editar

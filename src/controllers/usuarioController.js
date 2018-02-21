@@ -42,8 +42,8 @@ exports.usuario_registro = function (request, response) {
 };
 
 exports.usuario_detail = function (request, response) {
-    console.log("Buscar usuario: " + request.params.usuarioUsuario);
-    var query = Usuario.findOne({usuario: request.params.usuarioUsuario}, {});
+    console.log("Buscar usuario: " + request.params.usuario);
+    var query = Usuario.findOne({user: request.params.usuario}, {});
     var promise = query.exec();
     promise.then(function (usuario) {
         console.log("Encontrado: " + usuario);
@@ -59,13 +59,11 @@ exports.usuario_detail = function (request, response) {
 exports.usuario_saveOrUpdate = function (request, response) {
     console.log("save or update");
     let usuario = new Usuario({
-        _id: request.body.usuario,
-        usuario: request.body.usuario,
-        nombre: request.body.nombre,
-        apellido_paterno: request.body.apellido_paterno,
-        apellido_materno: request.body.apellido_materno
+        _id: request.body.user,
+        user: request.body.user,
+        password: request.body.password
     });
-    var query = Usuario.findOneAndUpdate({usuario: usuario.usuario}, {$set: usuario}, {upsert: true, new : true});
+    var query = Usuario.findOneAndUpdate({user: usuario.user}, {$set: usuario}, {upsert: true, new : true});
     var promise = query.exec();
     promise.then(function (usuario) {
         console.log("usuario creado: " + usuario);

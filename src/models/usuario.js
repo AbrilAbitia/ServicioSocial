@@ -8,4 +8,8 @@ var UserSchema = Schema(
         }
 );
 
+UserSchema.virtual('url').get(function () {
+    return '/usuarios/' + this.user;
+});
+
 module.exports = mongoose.model('User', UserSchema);

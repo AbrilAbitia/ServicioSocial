@@ -10,10 +10,10 @@ router.get('/lista', usuario_controller.usuario_list);
 
 router.get('/registro_usuario', usuario_controller.usuario_registro);
 
-router.get('/:usuarioUsuario([0-9]+)', usuario_controller.usuario_detail);
+router.get('/:usuario([A-Za-z0-9]+)', usuario_controller.usuario_detail);
 
-router.put('/:usuarioUsuario', usuario_controller.usuario_saveOrUpdate);
+router.put('/:usuario', usuario_controller.usuario_saveOrUpdate);
 
-router.delete('/:usuarioUsuario', usuario_controller.usuario_delete);
+router.delete('/:usuario', usuario_controller.usuario_delete);
 
 module.exports = router;
