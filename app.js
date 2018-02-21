@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 8080;
-var ip = process.env.OPENSHIFT_NODEJS_IP || process.env.IP || '127.0.0.1';
+var ip = process.env.OPENSHIFT_NODEJS_IP || process.env.IP || '0.0.0.0';
 
 var path = require('path');
 var logger = require('morgan');
