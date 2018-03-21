@@ -12,8 +12,6 @@ router.get('/registro_usuario', usuario_controller.usuario_registro);
 
 router.get('/:usuario([A-Za-z0-9]+)', usuario_controller.usuario_detail);
 
-router.put('/:usuario', usuario_controller.usuario_saveOrUpdate);
-
 router.delete('/:usuario', usuario_controller.usuario_delete);
 
 module.exports = router;

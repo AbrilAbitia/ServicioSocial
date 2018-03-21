@@ -31,6 +31,17 @@ function putUsuario() {
     });
 }
 
+function postUsuario() {
+    $.ajax({
+        type: 'POST',
+        url: '/signup',
+        data: $('#usuarioForm').serialize(),
+        success: function (data) {
+            alert(data);
+        }
+    });
+}
+
 function putMateria() {
     $.ajax({
         type: 'PUT',

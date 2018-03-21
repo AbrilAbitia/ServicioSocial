@@ -24,7 +24,10 @@
         "passport-local": "^1.0.0",
         "popper.js": "^1.12.9",
         "pug": "^2.0.0-rc.4",
-        "serve-favicon": "^2.4.5"
+        "serve-favicon": "^2.4.5",
+        "connect-flash": "~0.1.1",
+        "bcrypt-nodejs": "latest",
+        "method-override": "~2.3.6"
     },
     "scripts": {
         "start": "node app.js"

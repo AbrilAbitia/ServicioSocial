@@ -56,25 +56,6 @@ exports.usuario_detail = function (request, response) {
     });
 };
 
-exports.usuario_saveOrUpdate = function (request, response) {
-    console.log("save or update");
-    let usuario = new Usuario({
-        _id: request.body.user,
-        user: request.body.user,
-        password: request.body.password
-    });
-    var query = Usuario.findOneAndUpdate({user: usuario.user}, {$set: usuario}, {upsert: true, new : true});
-    var promise = query.exec();
-    promise.then(function (usuario) {
-        console.log("usuario creado: " + usuario);
-    }).catch(function (error) {
-        response.locals.message = 'Not found';
-        response.locals.error = error;
-        response.status(error.status || 500);
-        response.render('error');
-    });
-};
-
 exports.usuario_delete = function (request, response) {
     response.send('NOT IMPLEMENTED: Usuario delete DELETE');
 };
