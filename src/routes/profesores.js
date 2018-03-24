@@ -2,10 +2,6 @@ var express = require('express');
 var router = express.Router();
 var profesor_controller = require('../controllers/profesorController');
 
-router.get('/', function (request, response) {
-    response.render('profesores_home', {title: 'Profesores Home', message: "Página de profesores"});
-});
-
 router.get('/lista', profesor_controller.profesor_list);
 
 router.get('/registro_profesor', profesor_controller.profesor_registro);

@@ -1,33 +1,8 @@
-function putAlumno() {
-    $.ajax({
-        type: 'PUT',
-        url: '/alumnos/' + $('#boleta').prop('value'),
-        data: $('#alumnoForm').serialize(),
-        success: function (data) {
-            alert(data);
-        }
-    });
-}
-
-function putProfesor() {
-    $.ajax({
-        type: 'PUT',
-        url: '/profesores/' + $('#numero_registro').prop('value'),
-        data: $('#profesorForm').serialize(),
-        success: function (data) {
-            alert(data);
-        }
-    });
-}
-
 function putUsuario() {
     $.ajax({
         type: 'PUT',
-        url: '/usuarios/' + $('#usuario').prop('value'),
-        data: $('#usuarioForm').serialize(),
-        success: function (data) {
-            alert(data);
-        }
+        url: '/administradores/' + $('#curp').prop('value'),
+        data: $('#usuarioForm').serialize()
     });
 }
 
@@ -35,10 +10,7 @@ function postUsuario() {
     $.ajax({
         type: 'POST',
         url: '/signup',
-        data: $('#usuarioForm').serialize(),
-        success: function (data) {
-            alert(data);
-        }
+        data: $('#usuarioForm').serialize()
     });
 }
 
@@ -46,9 +18,6 @@ function putMateria() {
     $.ajax({
         type: 'PUT',
         url: '/materias/' + $('#clave').prop('value'),
-        data: $('#materiaForm').serialize(),
-        success: function (data) {
-            alert(data);
-        }
+        data: $('#materiaForm').serialize()
     });
 }

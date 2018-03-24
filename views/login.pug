@@ -15,8 +15,8 @@ block content
       div.loginmodal-container
         h1 Ingresa a tu cuenta
         form(action='/login', method='post')
-          input(type='text', name='username', placeholder='usuario')
-          input(type='password', name='password', placeholder='contraseña')
+          input(type='text', name='curp', placeholder='CURP')
+          input(type='password', name='password', placeholder='Contraseña')
           input.login.loginmodal-submit(type='submit', name='login', value='Ingresar')
         div.login-help
             a(href='#') &nbsp;Olvidé mi contraseña

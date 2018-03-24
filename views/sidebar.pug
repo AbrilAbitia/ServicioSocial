@@ -1,22 +1,30 @@
 div(class='col-sm-2')
   ul(class='sidebar-nav')
     li 
-      a(href='/') Home
+      a(href='/') Perfil
     li 
       hr
-    li 
-      a(href='/alumnos/lista') Alumnos
-    li 
-      a(href='/alumnos/registro_alumno?option=create') Registro de alumno
-    li 
-      a(href='/profesores/lista') Profesores
-    li 
-      a(href='/profesores/registro_profesor?option=create') Registro de profesor
-    li 
-      a(href='/materias/lista') Materia
-    li 
-      a(href='/materias/registro_materia?option=create') Registro de materia
-    li 
-      a(href='/usuarios/lista') Usuario
-    li 
-      a(href='/usuarios/registro_usuario?option=create') Registro de usuario
+    if rol === 0 || rol === 1
+        li 
+          a(href='/alumnos/lista') Ver alumnos
+        li 
+          a(href='/alumnos/registro_alumno?option=create') Registrar alumno
+        li 
+          a(href='/profesores/lista') Ver profesores
+        li 
+          a(href='/profesores/registro_profesor?option=create') Registrar profesor
+        li 
+          a(href='/materias/lista') Ver materias
+        li 
+          a(href='/materias/registro_materia?option=create') Registrar materia
+    if rol === 0
+        li
+          a(href='/administradores/lista') Ver administradores
+        li 
+          a(href='/administradores/registro_administrador?option=create') Registrar administrador
+    if rol === 2
+        li
+          a(href='#') Calificar
+    if rol === 3
+        li
+          a(href='#') Solicitar constancia

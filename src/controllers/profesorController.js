@@ -1,4 +1,4 @@
-var Profesor = require('../models/profesor');
+var Profesor = require('../models/usuario');
 
 exports.profesor_list = function (request, response) {
     var query = Profesor.find({});

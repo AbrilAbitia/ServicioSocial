@@ -1,12 +1,12 @@
-var alumnos = require('./routes/alumnos');
-var profesores = require('./routes/profesores');
+var administradores = require('./routes/administradores');
+//var profesores = require('./routes/profesores');
+//var alumnos = require('./routes/alumnos');
 var materias = require('./routes/materias');
-var usuarios = require('./routes/usuarios');
 
 module.exports = function (app, passport) {
 
     app.get('/', isLoggedIn, function (request, response) {
-        response.render('home', {title: 'Home', message: "HOME", user: request.user});
+        response.redirect('/profile');
     });
 
     app.get('/login', function (request, response) {
@@ -15,20 +15,17 @@ module.exports = function (app, passport) {
 
     app.get('/profile', isLoggedIn, function (request, response) {
         response.render('profile', {
-            message: request.user.username
+            curp: request.user.curp,
+            rol: request.user.rol,
+            json: request.user
         });
     });
 
-    app.get('/logout', function (request, response) {
-        request.logout();
+    app.post('/signup', passport.authenticate('local-signup'), function (request, response) {
+        console.log(request.body.curp);
+        console.log(request.body.password);
         response.redirect('/');
     });
-
-    app.post('/signup', passport.authenticate('local-signup', {
-        successRedirect: '/profile',
-        failureRedirect: '/usuarios/registro_usuario',
-        failureFlash: true
-    }));
 
     app.post('/login', passport.authenticate('local-login', {
         successRedirect: '/profile',
@@ -36,10 +33,19 @@ module.exports = function (app, passport) {
         failureFlash: true
     }));
 
-    app.use('/alumnos', alumnos);
-    app.use('/profesores', profesores);
+    app.get('/logout', function (request, response) {
+        request.logout();
+        response.redirect('/');
+    });
+
+    app.get('/error', function (request, response) {
+        response.render('error', {message: 'ERROR', error: request.flash('error')});
+    });
+
+    app.use('/administradores', administradores);
+    //app.use('/alumnos', alumnos)(app, passport);
+    //app.use('/profesores', profesores)(app, passport);
     app.use('/materias', materias);
-    app.use('/usuarios', usuarios);
 
 };
 

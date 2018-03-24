@@ -1,0 +1,62 @@
+extends layout
+
+block scripts
+  script(src='/js/sender.js')
+
+block sidebar
+  include sidebar.pug
+
+block content
+  div.main.container
+    div.row
+      div.col-md-6.col-md-offset-3
+        h1.display-4.m-b-2 #{title}
+        form#usuarioForm()
+          div.form-group
+            label(for='rol') Rol: Administrador
+            input#rol.form-control(type='text', name='rol', value=1, readonly)
+          div.form-group
+            label(for='curp') CURP:
+            input#curp.form-control(type='text', name='curp', value=isCurpDisabled?admin.curp:'', readonly=isCurpDisabled)
+          div.form-group
+            label(for='rfc') RFC:
+            input#rfc.form-control(type='text', name='rfc', value=isCurpDisabled?admin.rfc:'', readonly=areFieldsDisabled)
+          div.form-group
+            label(for='nombre') Nombre(s):
+            input#nombre.form-control(type='text', name='nombre', value=isCurpDisabled?admin.nombre:'', readonly=areFieldsDisabled)
+          div.form-group
+            label(for='apellido_paterno') Apellido paterno:
+            input#apellido_paterno.form-control(type='text', name='apellido_paterno', value=isCurpDisabled?admin.apellido_paterno:'', readonly=areFieldsDisabled)
+          div.form-group
+            label(for='apellido_materno') Apellido materno:
+            input#apellido_materno.form-control(type='text' name='apellido_materno', value=isCurpDisabled?admin.apellido_materno:'', readonly=areFieldsDisabled)
+          div.form-group
+            label(for='fecha_nacimiento') Fecha de nacimiento (Año/Mes/Día):
+            input#fecha_nacimiento.form-control(type='text', name='fecha_nacimiento', value=isCurpDisabled?admin.fecha_nacimiento:'', readonly=areFieldsDisabled)
+          div.form-group
+            label(for='telefonos') Teléfonos (separados por comas):
+            input#telefonos.form-control(type='text', name='telefonos', value=isCurpDisabled?admin.telefonos:'', readonly=areFieldsDisabled)
+          label(for='direccion') Dirección
+          div.form-group
+            label(for='calle') Calle:
+            input#calle.form-control(type='text', name='calle', value=isCurpDisabled?admin.direccion.calle:'', readonly=areFieldsDisabled)
+            label(for='colonia') Colonia:
+            input#colonia.form-control(type='text', name='colonia', value=isCurpDisabled?admin.direccion.colonia:'', readonly=areFieldsDisabled)
+            label(for='codigo_postal') Código postal:
+            input#codigo_postal.form-control(type='text', name='codigo_postal', value=isCurpDisabled?admin.direccion.codigo_postal:'', readonly=areFieldsDisabled)
+            label(for='municipio') Alcaldía/Municipio:
+            input#municipio.form-control(type='text', name='municipio', value=isCurpDisabled?admin.direccion.municipio:'', readonly=areFieldsDisabled)
+          div.form-group
+            label(for='correo') Correo:
+            input#correo.form-control(type='text', name='correo', value=isCurpDisabled?admin.correo:'', readonly=areFieldsDisabled)
+          div.form-group
+            label(for='password') Contraseña (min:8, max:16):
+            input#password.form-control(type='password', name='password', value='', readonly=areFieldsDisabled)
+          div.form-group
+            label(for='password') Confirmar contraseña:
+            input#confirm_password.form-control(type='password', name='confirm_password', value='', readonly=areFieldsDisabled)
+          if areFieldsDisabled
+          else if isCurpDisabled
+            button.btn.btn-primary(type='button', onClick='putUsuario()') Editar
+          else 
+            button.btn.btn-primary(type='button', onClick='postUsuario()') Registrar

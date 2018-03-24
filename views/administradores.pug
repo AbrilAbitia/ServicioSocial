@@ -7,9 +7,9 @@ block content
   h1= title
   
   ul
-  each usuario in usuarios
+  each admin in administradores
     li 
-      a(href=usuario.url) #{usuario.user} 
+      a(href=admin.url) #{admin.nombre_completo} 
 
   else
-    li Sin usuarios.
+    li Sin administradores.

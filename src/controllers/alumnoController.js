@@ -1,7 +1,7 @@
-var Alumno = require('../models/alumno');
+var Alumno = require('../models/usuario');
 
 exports.alumno_list = function (request, response) {
-    var query = Alumno.find({});
+    var query = Alumno.find({'rol': 3});
     var promise = query.exec();
     promise.then(function (list_alumnos) {
         console.log("Alumnos: " + list_alumnos);
