@@ -1,3 +1,11 @@
+function postUsuario() {
+    $.ajax({
+        type: 'POST',
+        url: '/signup',
+        data: $('#usuarioForm').serialize()
+    });
+}
+
 function putUsuario() {
     $.ajax({
         type: 'PUT',
@@ -6,11 +14,10 @@ function putUsuario() {
     });
 }
 
-function postUsuario() {
+function deleteUsuario(curp) {
     $.ajax({
-        type: 'POST',
-        url: '/signup',
-        data: $('#usuarioForm').serialize()
+        type: "DELETE",
+        url: '/administradores/' + curp
     });
 }
 

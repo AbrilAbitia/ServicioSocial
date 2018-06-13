@@ -49,12 +49,13 @@ block content
           div.form-group
             label(for='correo') Correo:
             input#correo.form-control(type='text', name='correo', value=isCurpDisabled?admin.correo:'', readonly=areFieldsDisabled)
-          div.form-group
-            label(for='password') Contraseña (min:8, max:16):
-            input#password.form-control(type='password', name='password', value='', readonly=areFieldsDisabled)
-          div.form-group
-            label(for='password') Confirmar contraseña:
-            input#confirm_password.form-control(type='password', name='confirm_password', value='', readonly=areFieldsDisabled)
+          if !areFieldsDisabled
+            div.form-group
+              label(for='password') Contraseña (min:8, max:16):
+              input#password.form-control(type='password', name='password', value='')
+            div.form-group
+              label(for='password') Confirmar contraseña:
+              input#confirm_password.form-control(type='password', name='confirm_password', value='')
           if areFieldsDisabled
           else if isCurpDisabled
             button.btn.btn-primary(type='button', onClick='putUsuario()') Editar

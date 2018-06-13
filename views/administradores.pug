@@ -1,5 +1,8 @@
 extends layout
 
+block scripts
+  script(src='/js/sender.js')
+  
 block sidebar
   include sidebar.pug
   
@@ -9,7 +12,12 @@ block content
   ul
   each admin in administradores
     li 
-      a(href=admin.url) #{admin.nombre_completo} 
+      span() #{admin.nombre_completo}
+      a(href=admin.url)
+        button.btn.btn-primary(type='button') Ver
+      a(href=admin.url + '/editar')
+        button.btn.btn-primary(type='button') Editar
+      button.btn.btn-primary(type='button', onClick='deleteUsuario("' + admin.curp + '")') Borrar
 
   else
     li Sin administradores.
