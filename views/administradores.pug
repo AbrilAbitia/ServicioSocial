@@ -8,16 +8,20 @@ block sidebar
   
 block content
   h1= title
-  
-  ul
-  each admin in administradores
-    li 
-      span() #{admin.nombre_completo}
-      a(href=admin.url)
-        button.btn.btn-primary(type='button') Ver
-      a(href=admin.url + '/editar')
-        button.btn.btn-primary(type='button') Editar
-      button.btn.btn-primary(type='button', onClick='deleteUsuario("' + admin.curp + '")') Borrar
-
-  else
-    li Sin administradores.
+    
+  table
+    thead
+      tr
+        th Administrador
+        th Acciones
+    tbody
+      each admin in administradores
+        tr
+          td
+            span() #{admin.nombre_completo}
+          td
+            a(href=admin.url)
+              button.btn.btn-primary(type='button') Ver
+            a(href=admin.url + '/editar')
+              button.btn.btn-primary(type='button') Editar
+            button.btn.btn-primary(type='button', onClick='deleteUsuario("' + admin.curp + '")') Borrar
