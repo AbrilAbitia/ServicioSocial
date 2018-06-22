@@ -16,29 +16,23 @@ exports.alumno_list = function (request, response) {
 };
 
 exports.alumno_registro = function (request, response) {
-    var alumno = null;
-    if (request.query.option === 'create') {
-        alumno = {
-            boleta: '',
-            nombre: '',
-            apellido_paterno: '',
-            apellido_materno: ''
-        };
-        response.render('alumno_form', {title: 'Registrar alumno', alumno: alumno, isBoletaDisabled: false, areFieldsDisabled: false});
-    } else {
-        console.log('Buscar alumno: ' + request.query.alumnoBoleta);
-        var query = Alumno.findOne({boleta: request.query.alumnoBoleta}, {});
-        var promise = query.exec();
-        promise.then(function (alumno) {
-            console.log('Encontrado: ' + alumno);
-            response.render('alumno_form', {title: 'Editar alumno', alumno: alumno, isBoletaDisabled: true, areFieldsDisabled: false});
-        }).catch(function (error) {
-            response.locals.message = 'Not found';
-            response.locals.error = error;
-            response.status(error.status || 500);
-            response.render('error');
-        });
-    }
+    console.log('Crear alumno');
+    response.render('alumno_form', {title: 'Registrar alumno', isBoletaDisabled: false, areFieldsDisabled: false});
+};
+
+exports.alumno_edicion = function (request, response) {
+    console.log('Editar alumno: ' + request.query.alumnoBoleta);
+    var query = Alumno.findOne({boleta: request.query.alumnoBoleta}, {});
+    var promise = query.exec();
+    promise.then(function (alumno) {
+        console.log('Encontrado: ' + alumno);
+        response.render('alumno_form', {title: 'Editar alumno', alumno: alumno, isBoletaDisabled: true, areFieldsDisabled: false});
+    }).catch(function (error) {
+        response.locals.message = 'Not found';
+        response.locals.error = error;
+        response.status(error.status || 500);
+        response.render('error');
+    });
 };
 
 exports.alumno_detail = function (request, response) {
@@ -57,18 +51,39 @@ exports.alumno_detail = function (request, response) {
 };
 
 exports.alumno_saveOrUpdate = function (request, response) {
-    console.log("save or update");
+    console.log("Save or update");
+    var hash;
+    if (request.body.password.length > 0) {
+        hash = new Alumno().generateHash(request.body.password);
+    } else {
+        hash = null;
+    }
+    var date = new Date(request.body.fecha_nacimiento);
+    var address = {
+        calle: request.body.calle,
+        colonia: request.body.colonia,
+        codigo_postal: request.body.codigo_postal,
+        municipio: request.body.municipio
+    };
     let alumno = new Alumno({
-        _id: request.body.boleta,
-        boleta: request.body.boleta,
+        _id: request.body.curp,
+        correo: request.body.correo,
+        rol: request.body.rol,
         nombre: request.body.nombre,
-        apellido_paterno: request.body.apellido_paterno,
-        apellido_materno: request.body.apellido_materno
+        pellido_paterno: request.body.apellido_paterno,
+        apellido_materno: request.body.apellido_materno,
+        telefonos: request.body.telefonos,
+        direccion: address,
+        fecha_nacimiento: date,
+        rfc: request.body.rfc
     });
-    var query = Alumno.findOneAndUpdate({boleta: alumno.boleta}, {$set: alumno}, {upsert: true, new : true});
+    if (hash !== null) {
+        alumno.password = hash;
+    }
+    var query = Alumno.findOneAndUpdate({curp: request.body.curp}, {$set: alumno}, {new : true});
     var promise = query.exec();
     promise.then(function (alumno) {
-        console.log("alumno creado: " + alumno);
+        console.log("Alumno creado: " + alumno);
     }).catch(function (error) {
         response.locals.message = 'Not found';
         response.locals.error = error;
@@ -78,5 +93,15 @@ exports.alumno_saveOrUpdate = function (request, response) {
 };
 
 exports.alumno_delete = function (request, response) {
-    response.send('NOT IMPLEMENTED: Alumno delete DELETE');
+    console.log('Borrar alumno');
+    var query = Alumno.deleteOne({curp: request.params.alumnoBoleta});
+    var promise = query.exec();
+    promise.then(function () {
+        console.log("Alumno borrado: " + request.params.alumnoBoleta);
+    }).catch(function (error) {
+        response.locals.message = 'Not found';
+        response.locals.error = error;
+        response.status(error.status || 500);
+        response.render('error');
+    });
 };
